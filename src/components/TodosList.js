@@ -1,11 +1,14 @@
-import React from "react"
-import TodoItem from "./TodoItem"
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prefer-stateless-function */
+import React from 'react';
+import PropTypes from 'prop-types';
+import TodoItem from './TodoItem';
 
 class TodosList extends React.Component {
   render() {
     return (
       <ul>
-        {this.props.todos.map(todo => (
+        {this.props.todos.map((todo) => (
           <TodoItem
             key={todo.id}
             todo={todo}
@@ -14,8 +17,14 @@ class TodosList extends React.Component {
           />
         ))}
       </ul>
-    )
+    );
   }
 }
 
-export default TodosList
+TodosList.propTypes = {
+  todos: PropTypes.string.isRequired,
+  handleChangeProps: PropTypes.func.isRequired,
+  deleteTodoProps: PropTypes.func.isRequired,
+};
+
+export default TodosList;
